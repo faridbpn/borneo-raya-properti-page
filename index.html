@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrimeLand Properties | Your Trusted Real Estate Partner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        .floating-delay {
+            animation: floating 6s ease-in-out 2s infinite;
+        }
+        
+        .pulse {
+            animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        .rotate {
+            animation: rotate 20s linear infinite;
+        }
+        
+        .wave {
+            animation: wave 8s ease-in-out infinite;
+        }
+        
+        .shine {
+            animation: shine 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, 15px); }
+            100% { transform: translate(0, -0px); } 
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            75% { transform: rotate(-5deg); }
+        }
+        
+        @keyframes shine {
+            from { box-shadow: 0 0 0px rgba(59, 130, 246, 0); }
+            to { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+        }
+        
+        .property-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .map-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .map-hover:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid #3b82f6;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #3b82f6; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Floating Elements -->
+    <div class="fixed top-20 left-10 w-16 h-16 rounded-full bg-blue-100 opacity-30 floating"></div>
+    <div class="fixed top-1/3 right-20 w-24 h-24 rounded-full bg-green-100 opacity-30 floating-delay"></div>
+    <div class="fixed bottom-1/4 left-1/4 w-20 h-20 rounded-full bg-blue-100 opacity-30 floating"></div>
+    
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-home text-blue-600 text-xl"></i>
+                    </div>
+                    <a href="#" class="text-2xl font-bold text-gray-800">Prime<span class="gradient-text">Land</span></a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-800 hover:text-blue-600 transition">Home</a>
+                    <a href="#properties" class="text-gray-800 hover:text-blue-600 transition">Properties</a>
+                    <a href="#services" class="text-gray-800 hover:text-blue-600 transition">Services</a>
+                    <a href="#about" class="text-gray-800 hover:text-blue-600 transition">About</a>
+                    <a href="#contact" class="text-gray-800 hover:text-blue-600 transition">Contact</a>
+                    <a href="#" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition shadow-md">
+                        <i class="fas fa-phone-alt mr-2"></i> Contact Agent
+                    </a>
+                </div>
+                
+                <div class="md:hidden">
+                    <button class="text-gray-800 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="relative overflow-hidden bg-gradient-to-r from-blue-50 to-green-50">
+        <div class="container mx-auto px-6 py-24 md:py-32 relative z-10">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-16 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-6 leading-tight">
+                        Find Your <span class="gradient-text">Dream Property</span> <br>
+                        <span class="typewriter">With Borneo</span>
+                    </h1>
+                    <p class="text-gray-600 text-lg mb-8 max-w-lg">
+                        We connect buyers and sellers of premium lands and properties across Indonesia. 
+                        Trusted by thousands for our transparent transactions and expert guidance.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#properties" class="bg-blue-600 text-white px-8 py-4 rounded-full hover:bg-blue-700 transition shadow-lg text-center font-medium">
+                            Browse Properties
+                        </a>
+                        <a href="#contact" class="bg-white text-gray-800 px-8 py-4 rounded-full hover:bg-gray-100 transition shadow-lg text-center font-medium">
+                            Get Valuation
+                        </a>
+                    </div>
+                    
+                    <div class="mt-12 flex flex-wrap gap-4">
+                        <div class="flex items-center bg-white px-4 py-2 rounded-full shadow-sm">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-2">
+                                <i class="fas fa-check text-blue-600 text-sm"></i>
+                            </div>
+                            <span class="text-sm font-medium">500+ Properties</span>
+                        </div>
+                        <div class="flex items-center bg-white px-4 py-2 rounded-full shadow-sm">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-2">
+                                <i class="fas fa-check text-blue-600 text-sm"></i>
+                            </div>
+                            <span class="text-sm font-medium">10+ Years Experience</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 relative">
+                    <div class="relative max-w-md mx-auto">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80" 
+                             alt="Modern House" 
+                             class="rounded-2xl shadow-2xl border-8 border-white floating">
+                        <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg wave">
+                            <div class="flex items-center">
+                                <div class="bg-blue-100 p-3 rounded-full mr-3">
+                                    <i class="fas fa-map-marker-alt text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500">Hot Property</p>
+                                    <p class="font-bold">South Jakarta</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating House Icon -->
+        <div class="absolute top-1/4 right-0 text-gray-200 opacity-20 text-9xl font-bold transform -rotate-12 select-none hidden lg:block">
+            <i class="fas fa-home"></i>
+        </div>
+    </section>
+    
+ 
+    
+    <!-- Featured Properties -->
+    <section id="properties" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Featured <span class="gradient-text">Properties</span>
+                </h2>
+                <div class="w-24 h-1 bg-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Explore our curated selection of premium properties and lands available for sale across Indonesia.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Property 1 -->
+                <div class="property-card bg-white rounded-xl overflow-hidden">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Luxury House" 
+                             class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            For Sale
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition cursor-pointer">
+                            <i class="far fa-heart text-blue-600"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">Luxury Residence</h3>
+                            <p class="text-blue-600 font-bold">Rp8.5M</p>
+                        </div>
+                        <p class="text-gray-600 mb-4 flex items-center">
+                            <i class="fas fa-map-marker-alt text-blue-500 mr-2"></i> South Jakarta
+                        </p>
+                        <div class="flex justify-between border-t border-gray-200 pt-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-bed text-blue-500 mr-2"></i>
+                                <span>4 Beds</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-bath text-blue-500 mr-2"></i>
+                                <span>3 Baths</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-vector-square text-blue-500 mr-2"></i>
+                                <span>350m²</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 2 -->
+                <div class="property-card bg-white rounded-xl overflow-hidden">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Modern Villa" 
+                             class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            New Listing
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition cursor-pointer">
+                            <i class="far fa-heart text-blue-600"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">Modern Villa</h3>
+                            <p class="text-blue-600 font-bold">Rp12M</p>
+                        </div>
+                        <p class="text-gray-600 mb-4 flex items-center">
+                            <i class="fas fa-map-marker-alt text-blue-500 mr-2"></i> Bogor
+                        </p>
+                        <div class="flex justify-between border-t border-gray-200 pt-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-bed text-blue-500 mr-2"></i>
+                                <span>5 Beds</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-bath text-blue-500 mr-2"></i>
+                                <span>4 Baths</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-vector-square text-blue-500 mr-2"></i>
+                                <span>500m²</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 3 -->
+                <div class="property-card bg-white rounded-xl overflow-hidden">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Commercial Land" 
+                             class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-yellow-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Investment
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition cursor-pointer">
+                            <i class="far fa-heart text-blue-600"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">Commercial Land</h3>
+                            <p class="text-blue-600 font-bold">Rp5.2M</p>
+                        </div>
+                        <p class="text-gray-600 mb-4 flex items-center">
+                            <i class="fas fa-map-marker-alt text-blue-500 mr-2"></i> Tangerang
+                        </p>
+                        <div class="flex justify-between border-t border-gray-200 pt-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-vector-square text-blue-500 mr-2"></i>
+                                <span>1200m²</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-road text-blue-500 mr-2"></i>
+                                <span>Main Road</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-certificate text-blue-500 mr-2"></i>
+                                <span>SHM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center text-blue-600 font-medium border border-blue-600 px-6 py-3 rounded-full hover:bg-blue-50 transition">
+                    View All Properties
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Our <span class="gradient-text">Services</span>
+                </h2>
+                <div class="w-24 h-1 bg-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Comprehensive real estate services tailored to meet your property needs.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 pulse">
+                        <i class="fas fa-home text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">Property Sales</h3>
+                    <p class="text-gray-600 text-center">
+                        Expert assistance in buying and selling residential and commercial properties with transparent transactions.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 pulse" style="animation-delay: 0.5s;">
+                        <i class="fas fa-tree text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">Land Acquisition</h3>
+                    <p class="text-gray-600 text-center">
+                        Strategic land purchasing services with thorough due diligence and legal verification.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 pulse" style="animation-delay: 1s;">
+                        <i class="fas fa-file-contract text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">Legal Services</h3>
+                    <p class="text-gray-600 text-center">
+                        Complete legal documentation including SHM, HGB, and other property certifications.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Our Team" 
+                             class="rounded-2xl shadow-xl border-8 border-white floating-delay">
+                        <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-lg shadow-lg">
+                            <div class="flex items-center">
+                                <div class="bg-blue-100 p-4 rounded-full mr-4">
+                                    <i class="fas fa-award text-blue-600 text-2xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-3xl font-bold text-gray-800">15+</p>
+                                    <p class="text-gray-600">Years Experience</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 md:pl-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                        About <span class="gradient-text">PrimeLand</span>
+                    </h2>
+                    <div class="w-24 h-1 bg-blue-500 mb-6"></div>
+                    <p class="text-gray-600 mb-6">
+                        Established in 2008, PrimeLand Properties has grown to become one of the most trusted real estate agencies in Indonesia. Our team consists of experienced professionals dedicated to helping clients navigate the property market with confidence.
+                    </p>
+                    <p class="text-gray-600 mb-8">
+                        We pride ourselves on our ethical approach, market knowledge, and commitment to delivering exceptional service to both buyers and sellers of property.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-check text-blue-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-800">500+ Happy Clients</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-check text-blue-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-800">Verified Listings</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-check text-blue-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-800">Legal Experts</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-check text-blue-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-800">24/7 Support</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="inline-flex items-center text-blue-600 font-medium">
+                        Learn More About Us
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    What Our <span class="gradient-text">Clients Say</span>
+                </h2>
+                <div class="w-24 h-1 bg-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Hear from people who have trusted us with their property transactions.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah J." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Sarah J.</h4>
+                            <p class="text-blue-600 text-sm">Bought land in Bogor</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        "The team at PrimeLand made my land purchase so smooth. They handled all the legal paperwork and ensured everything was in order. Highly recommended!"
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Michael T.</h4>
+                            <p class="text-blue-600 text-sm">Sold property in Jakarta</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        "I sold my apartment through PrimeLand and got a better price than I expected. Their market knowledge and negotiation skills are excellent."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Lisa M." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Lisa M.</h4>
+                            <p class="text-blue-600 text-sm">Bought house in BSD</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        "As a first-time home buyer, I was nervous about the process. My agent was patient, knowledgeable, and helped me find the perfect home within my budget."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Map Section -->
+    <section class="py-16 bg-blue-600 text-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                        Our <span class="text-blue-200">Coverage</span> Areas
+                    </h2>
+                    <p class="text-blue-100 mb-8 max-w-md">
+                        We operate across major cities in Indonesia with strong networks in prime locations.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center bg-blue-700 px-4 py-3 rounded-lg">
+                            <i class="fas fa-check-circle text-blue-300 mr-3"></i>
+                            <span>Jakarta</span>
+                        </div>
+                        <div class="flex items-center bg-blue-700 px-4 py-3 rounded-lg">
+                            <i class="fas fa-check-circle text-blue-300 mr-3"></i>
+                            <span>Bogor</span>
+                        </div>
+                        <div class="flex items-center bg-blue-700 px-4 py-3 rounded-lg">
+                            <i class="fas fa-check-circle text-blue-300 mr-3"></i>
+                            <span>Depok</span>
+                        </div>
+                        <div class="flex items-center bg-blue-700 px-4 py-3 rounded-lg">
+                            <i class="fas fa-check-circle text-blue-300 mr-3"></i>
+                            <span>Tangerang</span>
+                        </div>
+                        <div class="flex items-center bg-blue-700 px-4 py-3 rounded-lg">
+                            <i class="fas fa-check-circle text-blue-300 mr-3"></i>
+                            <span>Bekasi</span>
+                        </div>
+                        <div class="flex items-center bg-blue-700 px-4 py-3 rounded-lg">
+                            <i class="fas fa-check-circle text-blue-300 mr-3"></i>
+                            <span>Bandung</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 md:pl-12">
+                    <div class="bg-white p-1 rounded-xl shadow-2xl map-hover">
+                        <img src="" 
+                             alt="Coverage Map" 
+                             class="w-full h-full rounded-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                        Contact <span class="gradient-text">Us</span>
+                    </h2>
+                    <div class="w-24 h-1 bg-blue-500 mb-6"></div>
+                    <p class="text-gray-600 mb-8 max-w-md">
+                        Ready to start your property journey? Get in touch with our expert team today.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-1">Our Office</h4>
+                                <p class="text-gray-600">Jl. Sudirman Kav. 52-53<br>South Jakarta, 12190</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-1">Call Us</h4>
+                                <p class="text-gray-600">+62 21 1234 5678<br>Mon-Sat, 8am-6pm</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-1">Email Us</h4>
+                                <p class="text-gray-600">info@primeland.com<br>We respond within 24 hours</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 md:pl-12">
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Send Us a Message</h3>
+                        <form>
+                            <div class="mb-6">
+                                <label for="name" class="block text-gray-700 font-medium mb-2">Full Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div class="mb-6">
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div class="mb-6">
+                                <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-700 font-medium mb-2">Your Message</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-medium">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-blue-600 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                Subscribe to Our <span class="text-blue-200">Newsletter</span>
+            </h2>
+            <p class="text-blue-100 max-w-2xl mx-auto mb-8">
+                Get the latest property listings, market trends, and investment opportunities delivered to your inbox.
+            </p>
+            <form class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Your email address" class="px-4 py-3 rounded-l-lg focus:outline-none w-full text-gray-800">
+                <button type="submit" class="bg-blue-800 px-6 py-3 rounded-r-lg hover:bg-blue-900 transition font-medium">
+                    Subscribe
+                </button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-home text-blue-600"></i>
+                        </div>
+                        <a href="#" class="text-xl font-bold">Prime<span class="gradient-text">Land</span></a>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        Your trusted partner in property and land transactions across Indonesia.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">Properties</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">Services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Properties</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">Residential</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">Commercial</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">Land</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">Villas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">Apartments</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">New Projects</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Legal</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">Cookie Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">Licenses</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 mb-4 md:mb-0">
+                        &copy; 2023 PrimeLand Properties. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-blue-500 transition">FAQ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Floating WhatsApp Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="#" class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl shadow-lg hover:bg-green-600 transition transform hover:scale-110">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+    
+    <script>
+        // Simple animation for property cards on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeIn');
+                }
+            });
+        }, {threshold: 0.1});
+        
+        document.querySelectorAll('.property-card').forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Mobile menu toggle (would need implementation)
+        // Form submission handling (would need backend implementation)
+    </script>
+</body>
+</html>
